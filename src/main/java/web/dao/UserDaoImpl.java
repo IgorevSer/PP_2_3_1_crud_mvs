@@ -1,11 +1,11 @@
 package web.dao;
 
-import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -30,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void delete(long id) {
-        Query q = (Query) entityManager.createQuery("delete from User where id=:id");
+        Query q = entityManager.createQuery("delete from User where id=:id");
         q.setParameter("id", id);
         q.executeUpdate();
     }
